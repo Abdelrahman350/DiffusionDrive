@@ -1,0 +1,50 @@
+{
+  "name": "ResearchGenerativeAI",
+  "dockerFile": "Dockerfile",
+  "hostRequirements": {
+    "gpu": true
+  },
+  "workspaceFolder": "/home/mount/${localWorkspaceFolderBasename}",
+  "mounts": [
+    "source=${localWorkspaceFolder}/../,target=/home/mount,type=bind,consistency=cached",
+    "source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"
+  ],
+  "shutdownAction": "stopContainer",
+  "containerUser": "abdelrahman",
+  "remoteUser": "abdelrahman",
+  "runArgs": [
+    "--name=${localWorkspaceFolderBasename}",
+    "--hostname=ResearchComputerVision",
+    "--shm-size=3gb",
+    "--cpus=15",
+    "--memory=10g"
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "containerEnv": {
+    "PYTHONPATH": "/home/mount/${localWorkspaceFolderBasename}/src:${containerEnv:PYTHONPATH}"
+  },
+  "postCreateCommand": ".devcontainer/postCreate.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-python.black-formatter",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-python.debugpy",
+        "chrisltd.semgrep-vscode",
+        "aquasecurity.trivy",
+        "ms-azuretools.vscode-containers",
+        "docker.docker",
+        "ms-vscode.cpptools-extension-pack"
+      ]
+    }
+  }
+}

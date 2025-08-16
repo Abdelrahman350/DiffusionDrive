@@ -1,0 +1,19 @@
+# pixi environments
+.pixi
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info
+*.eggs
+*.whl
+*.dist-info
+*.db
+*.sqlite3
+*.log
+envs
+*.gz
+*.zip
+Miniconda3-latest-Linux-x86_64.sh
+download
